@@ -16,10 +16,6 @@ const { wrap: status } = require('@adobe/helix-status');
 const { epsagon } = require('@adobe/helix-epsagon');
 const fetchAPI = require('@adobe/helix-fetch');
 
-// force HTTP/1 in order to avoid issues with long-lived HTTP/2 sessions
-// on azure/kubernetes based I/O Runtime
-process.env.HELIX_FETCH_FORCE_HTTP1 = true;
-
 function createFetchContext() {
   /* istanbul ignore next */
   if (process.env.HELIX_FETCH_FORCE_HTTP1) {
@@ -50,7 +46,7 @@ function computeGithubURI(root, owner, repo, ref, path) {
  * @param {number} statusCode - error code.
  * @returns response
  */
-function error(message, statusCode = 500) {
+function error(message, statusCode) {
   return {
     statusCode,
     headers: {
@@ -71,6 +67,9 @@ async function getVersion(url) {
   if (resp.ok) {
     // todo: validate if proper version
     return text.trim();
+  }
+  if (resp.status !== 404) {
+    throw Error(`github error: ${resp.statusCode}`);
   }
   return '';
 }
@@ -105,6 +104,7 @@ async function main(params) {
 
   if (version) {
     return {
+      statusCode: 200,
       body: version,
       headers: {
         'x-pages-version': version,
@@ -113,6 +113,7 @@ async function main(params) {
     };
   }
   return {
+    statusCode: 200,
     body: 'no version',
     headers: {
       'Cache-Control': 'no-store, private, must-revalidate', // todo: proper caching ??

@@ -14,17 +14,110 @@
 
 'use strict';
 
+process.env.HELIX_FETCH_FORCE_HTTP1 = true;
+
 const assert = require('assert');
+const nock = require('nock');
 const index = require('../src/index.js').main;
 
 describe('Index Tests', () => {
-  it('index function is present', async () => {
-    const result = await index({});
-    assert.deepEqual(result, { body: 'Hello, world.' });
+  afterEach(() => {
+    nock.cleanAll();
   });
 
-  it('index function returns an object', async () => {
-    const result = await index();
-    assert.equal(typeof result, 'object');
+  it('returns 400 if owner is missing', async () => {
+    const result = await index({});
+    assert.deepEqual(result, {
+      body: 'owner, repo, ref required.',
+      headers: {
+        'Cache-Control': 'no-store, private, must-revalidate',
+      },
+      statusCode: 400,
+    });
+  });
+
+  it('returns 400 if repo is missing', async () => {
+    const result = await index({
+      owner: 'test-owner',
+    });
+    assert.deepEqual(result, {
+      body: 'owner, repo, ref required.',
+      headers: {
+        'Cache-Control': 'no-store, private, must-revalidate',
+      },
+      statusCode: 400,
+    });
+  });
+
+  it('returns 400 if ref is missing', async () => {
+    const result = await index({
+      owner: 'test-owner',
+      repo: 'test-repo',
+    });
+    assert.deepEqual(result, {
+      body: 'owner, repo, ref required.',
+      headers: {
+        'Cache-Control': 'no-store, private, must-revalidate',
+      },
+      statusCode: 400,
+    });
+  });
+
+  it('index function returns the version from github', async () => {
+    nock('https://raw.githubusercontent.com')
+      .get('/test-owner/test-repo/main/helix-version.txt')
+      .reply(200, 'foo-bar');
+
+    const result = await index({
+      owner: 'test-owner',
+      repo: 'test-repo',
+      ref: 'main',
+    });
+    assert.deepEqual(result, {
+      body: 'foo-bar',
+      statusCode: 200,
+      headers: {
+        'Cache-Control': 'no-store, private, must-revalidate',
+        'x-pages-version': 'foo-bar',
+      },
+    });
+  });
+
+  it('index function returns 404 the version does not exist on github', async () => {
+    nock('https://raw.githubusercontent.com')
+      .get('/test-owner/test-repo/main/helix-version.txt')
+      .reply(404);
+
+    const result = await index({
+      owner: 'test-owner',
+      repo: 'test-repo',
+      ref: 'main',
+    });
+    assert.deepEqual(result, {
+      body: 'no version',
+      statusCode: 200,
+      headers: {
+        'Cache-Control': 'no-store, private, must-revalidate',
+      },
+    });
+  });
+
+  it('index function returns 504 if github errors', async () => {
+    nock('https://raw.githubusercontent.com')
+      .get('/test-owner/test-repo/main/helix-version.txt')
+      .reply(500);
+
+    const result = await index({
+      owner: 'test-owner',
+      repo: 'test-repo',
+      ref: 'main',
+    });
+    assert.deepEqual(result, {
+      body: 'unable to fetch version',
+      statusCode: 504,
+      headers: {
+        'Cache-Control': 'no-store, private, must-revalidate',
+      },
+    });
   });
 });

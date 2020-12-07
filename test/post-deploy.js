@@ -32,13 +32,13 @@ function getbaseurl() {
 }
 
 describe(`Post-Deploy Tests (https://adobeioruntime.net/${getbaseurl()})`, () => {
-  it('Purge a blog post', async () => {
+  it('Returns version', async () => {
     await chai
       .request('https://adobeioruntime.net/')
-      .get(`${getbaseurl()}`)
+      .get(`${getbaseurl()}?owner=tripodsan&repo=helix-pages-test&ref=picker-unit-test`)
       .then((response) => {
         expect(response).to.have.status(200);
-        expect.fail('Not ready yet');
+        expect(response).to.have.header('x-pages-version', 'breaking-january');
       }).catch((e) => {
         throw e;
       });
