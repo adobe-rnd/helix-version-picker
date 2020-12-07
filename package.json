@@ -23,14 +23,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/adobe-rnd/helix-version-picker"
+    "url": "https://github.com/adobe/helix-version-picker"
   },
   "author": "",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/adobe-rnd/helix-version-picker/issues"
+    "url": "https://github.com/adobe/helix-version-picker/issues"
   },
-  "homepage": "https://github.com/adobe-rnd/helix-version-picker#readme",
+  "homepage": "https://github.com/adobe/helix-version-picker#readme",
   "dependencies": {
     "@adobe/helix-epsagon": "1.5.5",
     "@adobe/helix-fetch": "1.9.1",

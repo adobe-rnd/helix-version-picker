@@ -3,11 +3,11 @@
 > A preflight service that determines if a repo has opted in to running an upcoming version of helix-pages.
 
 ## Status
-[![codecov](https://img.shields.io/codecov/c/github/adobe-rnd/helix-version-picker.svg)](https://codecov.io/gh/adobe-rnd/helix-version-picker)
-[![CircleCI](https://img.shields.io/circleci/project/github/adobe-rnd/helix-version-picker.svg)](https://circleci.com/gh/adobe-rnd/helix-version-picker)
-[![GitHub license](https://img.shields.io/github/license/adobe-rnd/helix-version-picker.svg)](https://github.com/adobe-rnd/helix-version-picker/blob/main/LICENSE.txt)
-[![GitHub issues](https://img.shields.io/github/issues/adobe-rnd/helix-version-picker.svg)](https://github.com/adobe-rnd/helix-version-picker/issues)
-[![LGTM Code Quality Grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/adobe-rnd/helix-version-picker.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/adobe-rnd/helix-version-picker)
+[![codecov](https://img.shields.io/codecov/c/github/adobe/helix-version-picker.svg)](https://codecov.io/gh/adobe/helix-version-picker)
+[![CircleCI](https://img.shields.io/circleci/project/github/adobe/helix-version-picker.svg)](https://circleci.com/gh/adobe/helix-version-picker)
+[![GitHub license](https://img.shields.io/github/license/adobe/helix-version-picker.svg)](https://github.com/adobe/helix-version-picker/blob/main/LICENSE.txt)
+[![GitHub issues](https://img.shields.io/github/issues/adobe/helix-version-picker.svg)](https://github.com/adobe/helix-version-picker/issues)
+[![LGTM Code Quality Grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/adobe/helix-version-picker.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/adobe/helix-version-picker)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 ## Installation
