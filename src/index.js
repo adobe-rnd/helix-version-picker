@@ -9,19 +9,114 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
+const URL = require('url');
 const { wrap } = require('@adobe/openwhisk-action-utils');
 const { logger } = require('@adobe/openwhisk-action-logger');
 const { wrap: status } = require('@adobe/helix-status');
 const { epsagon } = require('@adobe/helix-epsagon');
+const fetchAPI = require('@adobe/helix-fetch');
+
+// force HTTP/1 in order to avoid issues with long-lived HTTP/2 sessions
+// on azure/kubernetes based I/O Runtime
+process.env.HELIX_FETCH_FORCE_HTTP1 = true;
+
+function createFetchContext() {
+  /* istanbul ignore next */
+  if (process.env.HELIX_FETCH_FORCE_HTTP1) {
+    return fetchAPI.context({ httpProtocol: 'http1', httpsProtocols: ['http1'] });
+  }
+  /* istanbul ignore next */
+  return fetchAPI.context({});
+}
+const fetchContext = createFetchContext();
+const { fetch } = fetchContext;
+
+function computeGithubURI(root, owner, repo, ref, path) {
+  const rootURI = URL.parse(root);
+  const rootPath = rootURI.path;
+  // remove double slashes
+  const fullPath = `${rootPath}/${owner}/${repo}/${ref}/${path}`.replace(
+    /\/+/g,
+    '/',
+  );
+
+  rootURI.pathname = fullPath;
+  return URL.format(rootURI);
+}
+
+/**
+ * Generates an error response
+ * @param {string} message - error message
+ * @param {number} statusCode - error code.
+ * @returns response
+ */
+function error(message, statusCode = 500) {
+  return {
+    statusCode,
+    headers: {
+      'Cache-Control': 'no-store, private, must-revalidate',
+    },
+    body: message,
+  };
+}
+
+async function getVersion(url) {
+  const fetchopts = {
+    cache: 'no-cache',
+    signal: fetchContext.timeoutSignal(5000),
+    'Cache-Control': 'no-cache',
+  };
+  const resp = await fetch(url, fetchopts);
+  const text = await resp.text();
+  if (resp.ok) {
+    // todo: validate if proper version
+    return text.trim();
+  }
+  return '';
+}
 
 /**
  * This is the main function
- * @param {string} name name of the person to greet
  * @returns {object} a greeting
  */
-function main({ name = 'world' }) {
+async function main(params) {
+  const {
+    __ow_logger: log,
+    owner,
+    repo,
+    ref,
+    root = 'https://raw.githubusercontent.com/',
+  } = params;
+
+  if (!owner || !repo || !ref) {
+    return error('owner, repo, ref required.', 400);
+  }
+
+  let version = '';
+
+  try {
+    const url = computeGithubURI(root, owner, repo, ref, '/helix-version.txt');
+    version = await getVersion(url);
+  } catch (e) {
+    log.error('error while fetching version', e);
+    return error('unable to fetch version', 504);
+  }
+  log.info(`version for ${repo}/${owner}#${ref} = "${version}"`);
+
+  if (version) {
+    return {
+      body: version,
+      headers: {
+        'x-pages-version': version,
+        'Cache-Control': 'no-store, private, must-revalidate', // todo: proper caching ??
+      },
+    };
+  }
   return {
-    body: `Hello, ${name}.`,
+    body: 'no version',
+    headers: {
+      'Cache-Control': 'no-store, private, must-revalidate', // todo: proper caching ??
+    },
   };
 }
 
