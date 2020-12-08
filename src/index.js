@@ -69,7 +69,7 @@ async function getVersion(url) {
     return text.trim();
   }
   if (resp.status !== 404) {
-    throw Error(`github error: ${resp.statusCode}`);
+    throw Error(`github error: ${resp.status} ${text}`);
   }
   return '';
 }
@@ -90,6 +90,7 @@ async function main(params) {
   } = params;
 
   if (!owner || !repo || !ref) {
+    log.warn('owner, repo, ref missing');
     return error('owner, repo, ref required.', 400);
   }
 
