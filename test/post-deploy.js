@@ -35,7 +35,10 @@ describe(`Post-Deploy Tests (https://adobeioruntime.net/${getbaseurl()})`, () =>
   it('Returns version', async () => {
     await chai
       .request('https://adobeioruntime.net/')
-      .get(`${getbaseurl()}?owner=tripodsan&repo=helix-pages-test&ref=picker-unit-test`)
+      .get(getbaseurl())
+      .set('X-Owner', 'tripodsan')
+      .set('X-Repo', 'helix-pages-test')
+      .set('X-Ref', 'picker-unit-test')
       .then((response) => {
         expect(response).to.have.status(200);
         expect(response).to.have.header('x-pages-version', 'breaking-january');

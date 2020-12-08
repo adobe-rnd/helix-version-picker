@@ -38,7 +38,9 @@ describe('Index Tests', () => {
 
   it('returns 400 if repo is missing', async () => {
     const result = await index({
-      owner: 'test-owner',
+      __ow_headers: {
+        'x-owner': 'test-owner',
+      },
     });
     assert.deepEqual(result, {
       body: 'owner, repo, ref required.',
@@ -51,8 +53,10 @@ describe('Index Tests', () => {
 
   it('returns 400 if ref is missing', async () => {
     const result = await index({
-      owner: 'test-owner',
-      repo: 'test-repo',
+      __ow_headers: {
+        'x-owner': 'test-owner',
+        'x-repo': 'test-repo',
+      },
     });
     assert.deepEqual(result, {
       body: 'owner, repo, ref required.',
@@ -69,9 +73,11 @@ describe('Index Tests', () => {
       .reply(200, 'foo-bar');
 
     const result = await index({
-      owner: 'test-owner',
-      repo: 'test-repo',
-      ref: 'main',
+      __ow_headers: {
+        'x-owner': 'test-owner',
+        'x-repo': 'test-repo',
+        'x-ref': 'main',
+      },
     });
     assert.deepEqual(result, {
       body: 'foo-bar',
@@ -79,6 +85,33 @@ describe('Index Tests', () => {
       headers: {
         'Cache-Control': 'no-store, private, must-revalidate',
         'x-pages-version': 'foo-bar',
+        'Surrogate-Control': 'max-age: 30',
+        Vary: 'X-Owner,X-Repo,X-Ref,X-Repo-Root-Path',
+      },
+    });
+  });
+
+  it('index function returns the version from github with alternate root', async () => {
+    nock('https://www.example.com')
+      .get('/test-owner/test-repo/main/helix-version.txt')
+      .reply(200, 'foo-bar');
+
+    const result = await index({
+      __ow_headers: {
+        'x-owner': 'test-owner',
+        'x-repo': 'test-repo',
+        'x-ref': 'main',
+        'x-repo-root-path': 'https://www.example.com',
+      },
+    });
+    assert.deepEqual(result, {
+      body: 'foo-bar',
+      statusCode: 200,
+      headers: {
+        'Cache-Control': 'no-store, private, must-revalidate',
+        'x-pages-version': 'foo-bar',
+        'Surrogate-Control': 'max-age: 30',
+        Vary: 'X-Owner,X-Repo,X-Ref,X-Repo-Root-Path',
       },
     });
   });
@@ -89,15 +122,19 @@ describe('Index Tests', () => {
       .reply(404);
 
     const result = await index({
-      owner: 'test-owner',
-      repo: 'test-repo',
-      ref: 'main',
+      __ow_headers: {
+        'x-owner': 'test-owner',
+        'x-repo': 'test-repo',
+        'x-ref': 'main',
+      },
     });
     assert.deepEqual(result, {
       body: 'no version',
       statusCode: 200,
       headers: {
         'Cache-Control': 'no-store, private, must-revalidate',
+        'Surrogate-Control': 'max-age: 30',
+        Vary: 'X-Owner,X-Repo,X-Ref,X-Repo-Root-Path',
       },
     });
   });
@@ -108,9 +145,11 @@ describe('Index Tests', () => {
       .reply(500);
 
     const result = await index({
-      owner: 'test-owner',
-      repo: 'test-repo',
-      ref: 'main',
+      __ow_headers: {
+        'x-owner': 'test-owner',
+        'x-repo': 'test-repo',
+        'x-ref': 'main',
+      },
     });
     assert.deepEqual(result, {
       body: 'unable to fetch version',

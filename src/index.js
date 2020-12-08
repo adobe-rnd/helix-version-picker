@@ -81,10 +81,12 @@ async function getVersion(url) {
 async function main(params) {
   const {
     __ow_logger: log,
-    owner,
-    repo,
-    ref,
-    root = 'https://raw.githubusercontent.com/',
+    __ow_headers: {
+      'x-owner': owner,
+      'x-repo': repo,
+      'x-ref': ref,
+      'x-repo-root-path': root = 'https://raw.githubusercontent.com/',
+    } = {},
   } = params;
 
   if (!owner || !repo || !ref) {
@@ -109,6 +111,8 @@ async function main(params) {
       headers: {
         'x-pages-version': version,
         'Cache-Control': 'no-store, private, must-revalidate', // todo: proper caching ??
+        'Surrogate-Control': 'max-age: 30',
+        Vary: 'X-Owner,X-Repo,X-Ref,X-Repo-Root-Path',
       },
     };
   }
@@ -117,6 +121,8 @@ async function main(params) {
     body: 'no version',
     headers: {
       'Cache-Control': 'no-store, private, must-revalidate', // todo: proper caching ??
+      'Surrogate-Control': 'max-age: 30',
+      Vary: 'X-Owner,X-Repo,X-Ref,X-Repo-Root-Path',
     },
   };
 }
