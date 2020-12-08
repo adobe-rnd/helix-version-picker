@@ -86,6 +86,7 @@ describe('Index Tests', () => {
         'Cache-Control': 'no-store, private, must-revalidate',
         'x-pages-version': 'foo-bar',
         'Surrogate-Control': 'max-age: 30',
+        'Surrogate-Key': 'preflight-main--test-repo--test-owner',
         Vary: 'X-Owner,X-Repo,X-Ref,X-Repo-Root-Path',
       },
     });
@@ -111,6 +112,7 @@ describe('Index Tests', () => {
         'Cache-Control': 'no-store, private, must-revalidate',
         'x-pages-version': 'foo-bar',
         'Surrogate-Control': 'max-age: 30',
+        'Surrogate-Key': 'preflight-main--test-repo--test-owner',
         Vary: 'X-Owner,X-Repo,X-Ref,X-Repo-Root-Path',
       },
     });
@@ -134,6 +136,7 @@ describe('Index Tests', () => {
       headers: {
         'Cache-Control': 'no-store, private, must-revalidate',
         'Surrogate-Control': 'max-age: 30',
+        'Surrogate-Key': 'preflight-main--test-repo--test-owner',
         Vary: 'X-Owner,X-Repo,X-Ref,X-Repo-Root-Path',
       },
     });

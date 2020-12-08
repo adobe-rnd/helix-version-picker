@@ -104,6 +104,7 @@ async function main(params) {
     return error('unable to fetch version', 504);
   }
   log.info(`version for ${repo}/${owner}#${ref} = "${version}"`);
+  const surrogateKey = `preflight-${ref}--${repo}--${owner}`;
 
   if (version) {
     return {
@@ -113,6 +114,7 @@ async function main(params) {
         'x-pages-version': version,
         'Cache-Control': 'no-store, private, must-revalidate', // todo: proper caching ??
         'Surrogate-Control': 'max-age: 30',
+        'Surrogate-Key': surrogateKey,
         Vary: 'X-Owner,X-Repo,X-Ref,X-Repo-Root-Path',
       },
     };
@@ -123,6 +125,7 @@ async function main(params) {
     headers: {
       'Cache-Control': 'no-store, private, must-revalidate', // todo: proper caching ??
       'Surrogate-Control': 'max-age: 30',
+      'Surrogate-Key': surrogateKey,
       Vary: 'X-Owner,X-Repo,X-Ref,X-Repo-Root-Path',
     },
   };
