@@ -42,7 +42,8 @@ describe(`Post-Deploy Tests (https://adobeioruntime.net/${getbaseurl()})`, () =>
       .then((response) => {
         expect(response).to.have.status(200);
         expect(response).to.have.header('x-pages-version', 'breaking-january');
-      }).catch((e) => {
+      })
+      .catch((e) => {
         throw e;
       });
   }).timeout(50000);
