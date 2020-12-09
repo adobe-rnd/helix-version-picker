@@ -1,3 +1,10 @@
+# 1.0.0 (2020-12-09)
+
+
+### Features
+
+* initial code ([b5b1412](https://github.com/adobe/helix-version-picker/commit/b5b1412254054a6535871d5bf65dce6b4914e3e3))
+
 ## [1.9.18](https://github.com/adobe/helix-service/compare/v1.9.17...v1.9.18) (2020-12-07)
 
 
