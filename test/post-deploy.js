@@ -32,14 +32,18 @@ function getbaseurl() {
 }
 
 describe(`Post-Deploy Tests (https://adobeioruntime.net/${getbaseurl()})`, () => {
-  it('Purge a blog post', async () => {
+  it('Returns version', async () => {
     await chai
       .request('https://adobeioruntime.net/')
-      .get(`${getbaseurl()}`)
+      .get(getbaseurl())
+      .set('X-Owner', 'tripodsan')
+      .set('X-Repo', 'helix-pages-test')
+      .set('X-Ref', 'picker-unit-test')
       .then((response) => {
         expect(response).to.have.status(200);
-        expect.fail('Not ready yet');
-      }).catch((e) => {
+        expect(response).to.have.header('x-pages-version', 'breaking-january');
+      })
+      .catch((e) => {
         throw e;
       });
   }).timeout(50000);
