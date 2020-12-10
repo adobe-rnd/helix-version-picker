@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/adobe/helix-version-picker/compare/v1.0.1...v1.0.2) (2020-12-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-status to v8.2.3 ([#4](https://github.com/adobe/helix-version-picker/issues/4)) ([481f0e2](https://github.com/adobe/helix-version-picker/commit/481f0e29f370918e1935dff949b58c767492dfa2))
+
 ## [1.0.1](https://github.com/adobe/helix-version-picker/compare/v1.0.0...v1.0.1) (2020-12-10)
 
 
