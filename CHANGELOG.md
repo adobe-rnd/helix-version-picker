@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/adobe/helix-version-picker/compare/v1.0.4...v1.0.5) (2020-12-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/openwhisk-action-logger to v2.3.1 ([#6](https://github.com/adobe/helix-version-picker/issues/6)) ([df1cee7](https://github.com/adobe/helix-version-picker/commit/df1cee79e30aa8ef13651ade56ca3a94adce2450))
+
 ## [1.0.4](https://github.com/adobe/helix-version-picker/compare/v1.0.3...v1.0.4) (2020-12-17)
 
 
