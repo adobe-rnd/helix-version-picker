@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/adobe/helix-version-picker/compare/v1.0.6...v1.0.7) (2021-02-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-epsagon to v1.5.7 ([#19](https://github.com/adobe/helix-version-picker/issues/19)) ([17c86fb](https://github.com/adobe/helix-version-picker/commit/17c86fb9152cab1b2ffac47f40b51106c17f9cc8))
+
 ## [1.0.6](https://github.com/adobe/helix-version-picker/compare/v1.0.5...v1.0.6) (2021-01-21)
 
 
