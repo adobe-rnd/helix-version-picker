@@ -1,3 +1,10 @@
+## [1.0.9](https://github.com/adobe/helix-version-picker/compare/v1.0.8...v1.0.9) (2021-02-02)
+
+
+### Bug Fixes
+
+* **ci:** enable AWS monitor ([7764387](https://github.com/adobe/helix-version-picker/commit/776438723e9b972b006f3a24b70b5d1ff0dafc65))
+
 ## [1.0.8](https://github.com/adobe/helix-version-picker/compare/v1.0.7...v1.0.8) (2021-02-02)
 
 
