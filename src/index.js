@@ -19,7 +19,7 @@ const fetchAPI = require('@adobe/helix-fetch');
 function createFetchContext() {
   /* istanbul ignore next */
   if (process.env.HELIX_FETCH_FORCE_HTTP1) {
-    return fetchAPI.context({ httpProtocol: 'http1', httpsProtocols: ['http1'] });
+    return fetchAPI.context({ alpnProtocols: [fetchAPI.ALPN_HTTP1_1] });
   }
   /* istanbul ignore next */
   return fetchAPI.context({});
@@ -58,7 +58,7 @@ function error(message, statusCode) {
 
 async function getVersion(url) {
   const fetchopts = {
-    cache: 'no-cache',
+    cache: 'no-store',
     signal: fetchContext.timeoutSignal(5000),
     'Cache-Control': 'no-cache',
   };
