@@ -1,3 +1,10 @@
+## [1.0.13](https://github.com/adobe/helix-version-picker/compare/v1.0.12...v1.0.13) (2021-02-11)
+
+
+### Bug Fixes
+
+* **deps:** bump helix-fetch ([f59feb1](https://github.com/adobe/helix-version-picker/commit/f59feb12308881136dc71a60826794eca34fe196))
+
 ## [1.0.12](https://github.com/adobe/helix-version-picker/compare/v1.0.11...v1.0.12) (2021-02-11)
 
 
