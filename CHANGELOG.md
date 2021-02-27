@@ -1,3 +1,10 @@
+## [1.0.21](https://github.com/adobe/helix-version-picker/compare/v1.0.20...v1.0.21) (2021-02-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-status to v9.0.6 ([#41](https://github.com/adobe/helix-version-picker/issues/41)) ([125d8ec](https://github.com/adobe/helix-version-picker/commit/125d8ecff79fa233e86f777f5647d994ef363a20))
+
 ## [1.0.20](https://github.com/adobe/helix-version-picker/compare/v1.0.19...v1.0.20) (2021-02-26)
 
 
