@@ -25,7 +25,7 @@ function createFetchContext() {
   return fetchAPI.context({});
 }
 const fetchContext = createFetchContext();
-const { fetch } = fetchContext;
+const { fetch, Response } = fetchContext;
 
 function computeGithubURI(root, owner, repo, ref, path) {
   const rootURI = URL.parse(root);
@@ -47,13 +47,13 @@ function computeGithubURI(root, owner, repo, ref, path) {
  * @returns response
  */
 function error(message, statusCode) {
-  return {
-    statusCode,
+  return new Response(message, {
+    status: statusCode,
     headers: {
       'Cache-Control': 'no-store, private, must-revalidate',
     },
     body: message,
-  };
+  });
 }
 
 async function getVersion(url) {
@@ -78,16 +78,12 @@ async function getVersion(url) {
  * This is the main function
  * @returns {object} a greeting
  */
-async function main(params) {
-  const {
-    __ow_logger: log,
-    __ow_headers: {
-      'x-owner': owner,
-      'x-repo': repo,
-      'x-ref': ref,
-      'x-repo-root-path': root = 'https://raw.githubusercontent.com/',
-    } = {},
-  } = params;
+async function main(request, context) {
+  const owner = request.headers.get('x-owner');
+  const repo = request.headers.get('x-repo');
+  const ref = request.headers.get('x-ref');
+  const root = request.headers.get('x-repo-root-path') || 'https://raw.githubusercontent.com/';
+  const { log } = context;
 
   if (!owner || !repo || !ref) {
     log.warn('owner, repo, ref missing');
@@ -107,9 +103,8 @@ async function main(params) {
   const surrogateKey = `preflight-${ref}--${repo}--${owner}`;
 
   if (version) {
-    return {
-      statusCode: 200,
-      body: version,
+    return new Response(version, {
+      status: 200,
       headers: {
         'x-pages-version': version,
         'Cache-Control': 'no-store, private, must-revalidate', // todo: proper caching ??
@@ -117,22 +112,20 @@ async function main(params) {
         'Surrogate-Key': surrogateKey,
         Vary: 'X-Owner,X-Repo,X-Ref,X-Repo-Root-Path',
       },
-    };
+    });
   }
-  return {
-    statusCode: 200,
-    body: 'no version',
+  return new Response('no version', {
+    status: 200,
     headers: {
       'Cache-Control': 'no-store, private, must-revalidate', // todo: proper caching ??
       'Surrogate-Control': 'max-age: 30',
       'Surrogate-Key': surrogateKey,
       Vary: 'X-Owner,X-Repo,X-Ref,X-Repo-Root-Path',
     },
-  };
+  });
 }
 
 module.exports.main = wrap(main)
-  .with(epsagon)
   .with(status)
   .with(logger.trace)
   .with(logger);
