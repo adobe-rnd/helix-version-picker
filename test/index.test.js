@@ -18,7 +18,10 @@ process.env.HELIX_FETCH_FORCE_HTTP1 = true;
 
 const assert = require('assert');
 const nock = require('nock');
-const index = require('../src/index.js').main;
+const { main } = require('../src/index.js');
+const { retrofit } = require('./utils.js');
+
+const index = retrofit(main);
 
 describe('Index Tests', () => {
   afterEach(() => {
@@ -30,7 +33,8 @@ describe('Index Tests', () => {
     assert.deepEqual(result, {
       body: 'owner, repo, ref required.',
       headers: {
-        'Cache-Control': 'no-store, private, must-revalidate',
+        'cache-control': 'no-store, private, must-revalidate',
+        'content-type': 'text/plain; charset=utf-8',
       },
       statusCode: 400,
     });
@@ -45,7 +49,8 @@ describe('Index Tests', () => {
     assert.deepEqual(result, {
       body: 'owner, repo, ref required.',
       headers: {
-        'Cache-Control': 'no-store, private, must-revalidate',
+        'cache-control': 'no-store, private, must-revalidate',
+        'content-type': 'text/plain; charset=utf-8',
       },
       statusCode: 400,
     });
@@ -61,7 +66,8 @@ describe('Index Tests', () => {
     assert.deepEqual(result, {
       body: 'owner, repo, ref required.',
       headers: {
-        'Cache-Control': 'no-store, private, must-revalidate',
+        'cache-control': 'no-store, private, must-revalidate',
+        'content-type': 'text/plain; charset=utf-8',
       },
       statusCode: 400,
     });
@@ -83,11 +89,12 @@ describe('Index Tests', () => {
       body: 'foo-bar',
       statusCode: 200,
       headers: {
-        'Cache-Control': 'no-store, private, must-revalidate',
+        'cache-control': 'no-store, private, must-revalidate',
         'x-pages-version': 'foo-bar',
-        'Surrogate-Control': 'max-age: 30',
-        'Surrogate-Key': 'preflight-main--test-repo--test-owner',
-        Vary: 'X-Owner,X-Repo,X-Ref,X-Repo-Root-Path',
+        'surrogate-control': 'max-age: 30',
+        'surrogate-key': 'preflight-main--test-repo--test-owner',
+        vary: 'X-Owner,X-Repo,X-Ref,X-Repo-Root-Path',
+        'content-type': 'text/plain; charset=utf-8',
       },
     });
   });
@@ -109,11 +116,12 @@ describe('Index Tests', () => {
       body: 'foo-bar',
       statusCode: 200,
       headers: {
-        'Cache-Control': 'no-store, private, must-revalidate',
+        'cache-control': 'no-store, private, must-revalidate',
         'x-pages-version': 'foo-bar',
-        'Surrogate-Control': 'max-age: 30',
-        'Surrogate-Key': 'preflight-main--test-repo--test-owner',
-        Vary: 'X-Owner,X-Repo,X-Ref,X-Repo-Root-Path',
+        'surrogate-control': 'max-age: 30',
+        'surrogate-key': 'preflight-main--test-repo--test-owner',
+        vary: 'X-Owner,X-Repo,X-Ref,X-Repo-Root-Path',
+        'content-type': 'text/plain; charset=utf-8',
       },
     });
   });
@@ -134,10 +142,11 @@ describe('Index Tests', () => {
       body: 'no version',
       statusCode: 200,
       headers: {
-        'Cache-Control': 'no-store, private, must-revalidate',
-        'Surrogate-Control': 'max-age: 30',
-        'Surrogate-Key': 'preflight-main--test-repo--test-owner',
-        Vary: 'X-Owner,X-Repo,X-Ref,X-Repo-Root-Path',
+        'cache-control': 'no-store, private, must-revalidate',
+        'surrogate-control': 'max-age: 30',
+        'surrogate-key': 'preflight-main--test-repo--test-owner',
+        vary: 'X-Owner,X-Repo,X-Ref,X-Repo-Root-Path',
+        'content-type': 'text/plain; charset=utf-8',
       },
     });
   });
@@ -158,7 +167,8 @@ describe('Index Tests', () => {
       body: 'unable to fetch version',
       statusCode: 504,
       headers: {
-        'Cache-Control': 'no-store, private, must-revalidate',
+        'cache-control': 'no-store, private, must-revalidate',
+        'content-type': 'text/plain; charset=utf-8',
       },
     });
   });

@@ -12,10 +12,10 @@
     "semantic-release": "semantic-release",
     "docs": "npx jsdoc2md -c .jsdoc.json --files 'src/*.js'  > docs/API.md",
     "commit": "git-cz",
-    "build": "wsk-builder -v",
-    "deploy": "wsk-builder -v --deploy --test=/_status_check/healthcheck.json",
-    "deploy-sequences": "wsk-builder --no-build -no-hints -l latest -l major -l minor",
-    "deploy-ci": "wsk-builder -v --deploy --test=/_status_check/healthcheck.json --pkgVersion=ci$CIRCLE_BUILD_NUM -l ci"
+    "build": "hedy -v",
+    "deploy": "hedy -v --deploy --test=/_status_check/healthcheck.json",
+    "deploy-ci": "hedy -v --deploy --test=/_status_check/healthcheck.json --pkgVersion=ci$CIRCLE_BUILD_NUM -l ci",
+    "deploy-sequences": "hedy --target=wsk --no-build -no-hints -l latest -l major -l minor"
   },
   "wsk": {
     "namespace": "helix",
@@ -32,7 +32,6 @@
   },
   "homepage": "https://github.com/adobe/helix-version-picker#readme",
   "dependencies": {
-    "@adobe/helix-epsagon": "1.5.8",
     "@adobe/helix-fetch": "2.1.6",
     "@adobe/helix-status": "9.0.6",
     "@adobe/openwhisk-action-logger": "2.4.1",
@@ -40,7 +39,7 @@
   },
   "devDependencies": {
     "@adobe/eslint-config-helix": "1.1.4",
-    "@adobe/openwhisk-action-builder": "3.0.12",
+    "@adobe/helix-deploy": "3.6.0",
     "@semantic-release/changelog": "5.0.1",
     "@semantic-release/exec": "5.0.0",
     "@semantic-release/git": "9.0.0",
@@ -49,6 +48,7 @@
     "codecov": "3.8.1",
     "commitizen": "4.2.3",
     "cz-conventional-changelog": "3.3.0",
+    "dotenv": "8.2.0",
     "eslint": "7.20.0",
     "eslint-plugin-header": "3.1.1",
     "eslint-plugin-import": "2.22.1",
