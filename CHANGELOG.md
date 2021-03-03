@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/adobe/helix-version-picker/compare/v1.0.21...v1.1.0) (2021-03-03)
+
+
+### Bug Fixes
+
+* **index:** remove unused dependency ([6ce6eb1](https://github.com/adobe/helix-version-picker/commit/6ce6eb1acf8de1485147c36d8f126b5da29f4037))
+
+
+### Features
+
+* **deploy:** support universal runtime ([e74a28b](https://github.com/adobe/helix-version-picker/commit/e74a28b17f17d3d2b5ef6d48674bb702f2b5dfdf)), closes [#44](https://github.com/adobe/helix-version-picker/issues/44)
+
 ## [1.0.21](https://github.com/adobe/helix-version-picker/compare/v1.0.20...v1.0.21) (2021-02-27)
 
 
