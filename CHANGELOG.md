@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/adobe/helix-version-picker/compare/v1.1.1...v1.1.2) (2021-03-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-deploy to v3.8.0 ([#52](https://github.com/adobe/helix-version-picker/issues/52)) ([c149cbf](https://github.com/adobe/helix-version-picker/commit/c149cbf0791c83570e28fea3977a2770608cb960))
+
 ## [1.1.1](https://github.com/adobe/helix-version-picker/compare/v1.1.0...v1.1.1) (2021-03-05)
 
 
