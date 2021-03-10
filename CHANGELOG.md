@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/adobe/helix-version-picker/compare/v1.1.4...v1.1.5) (2021-03-10)
+
+
+### Bug Fixes
+
+* **deploy:** use 256 memory ([#55](https://github.com/adobe/helix-version-picker/issues/55)) ([347965e](https://github.com/adobe/helix-version-picker/commit/347965ed19f1977c9708c1af17e9fcea964bb3c2))
+
 ## [1.1.4](https://github.com/adobe/helix-version-picker/compare/v1.1.3...v1.1.4) (2021-03-09)
 
 
