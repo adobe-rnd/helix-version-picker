@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/adobe/helix-version-picker/compare/v1.1.5...v1.1.6) (2021-03-11)
+
+
+### Bug Fixes
+
+* **deps:** update adobe fixes ([#56](https://github.com/adobe/helix-version-picker/issues/56)) ([b5829e1](https://github.com/adobe/helix-version-picker/commit/b5829e1ac85ec6602be3c676eb2e8961d51ab8e0))
+
 ## [1.1.5](https://github.com/adobe/helix-version-picker/compare/v1.1.4...v1.1.5) (2021-03-10)
 
 
