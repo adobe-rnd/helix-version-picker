@@ -1,6 +1,6 @@
 {
   "name": "@adobe/helix-version-picker",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "private": true,
   "description": "Helix Version Picker",
   "main": "src/index.js",
@@ -19,7 +19,8 @@
   },
   "wsk": {
     "namespace": "helix",
-    "name": "helix-services/version-picker@${version}"
+    "name": "helix-services/version-picker@${version}",
+    "memory": 256
   },
   "repository": {
     "type": "git",
