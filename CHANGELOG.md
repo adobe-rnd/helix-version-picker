@@ -1,3 +1,10 @@
+## [1.1.8](https://github.com/adobe/helix-version-picker/compare/v1.1.7...v1.1.8) (2021-03-11)
+
+
+### Bug Fixes
+
+* deploy to all runtimes ([335a107](https://github.com/adobe/helix-version-picker/commit/335a10759ac25a34753d30bca0f3fdf60b6e0715))
+
 ## [1.1.7](https://github.com/adobe/helix-version-picker/compare/v1.1.6...v1.1.7) (2021-03-11)
 
 
