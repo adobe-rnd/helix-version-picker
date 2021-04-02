@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/adobe/helix-version-picker/compare/v1.1.12...v1.2.0) (2021-04-02)
+
+
+### Features
+
+* **deploy:** deploy to google ([a6d963c](https://github.com/adobe/helix-version-picker/commit/a6d963c3c18d4536afc805abada319d343a4b7df))
+
 ## [1.1.12](https://github.com/adobe/helix-version-picker/compare/v1.1.11...v1.1.12) (2021-03-26)
 
 
