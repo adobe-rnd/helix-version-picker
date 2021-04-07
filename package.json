@@ -20,7 +20,7 @@
   "wsk": {
     "namespace": "helix",
     "name": "helix-services/version-picker@${version}",
-    "memory": 256
+    "memory": 512
   },
   "repository": {
     "type": "git",
