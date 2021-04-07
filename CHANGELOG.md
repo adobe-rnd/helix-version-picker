@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/adobe/helix-version-picker/compare/v1.2.1...v1.2.2) (2021-04-07)
+
+
+### Bug Fixes
+
+* bump memory to 512 ([4af7bcc](https://github.com/adobe/helix-version-picker/commit/4af7bcc1d21dcc3d3798de9bb163d00c5933fd97))
+
 ## [1.2.1](https://github.com/adobe/helix-version-picker/compare/v1.2.0...v1.2.1) (2021-04-05)
 
 
