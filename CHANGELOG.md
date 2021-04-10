@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/adobe/helix-version-picker/compare/v1.2.2...v1.3.0) (2021-04-10)
+
+
+### Features
+
+* **log:** use universal logger ([#89](https://github.com/adobe/helix-version-picker/issues/89)) ([1c74710](https://github.com/adobe/helix-version-picker/commit/1c74710e7c9556175aa3e23375df026f3cdad55c))
+
 ## [1.2.2](https://github.com/adobe/helix-version-picker/compare/v1.2.1...v1.2.2) (2021-04-07)
 
 
