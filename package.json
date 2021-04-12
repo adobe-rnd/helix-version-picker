@@ -1,6 +1,6 @@
 {
   "name": "@adobe/helix-version-picker",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "private": true,
   "description": "Helix Version Picker",
   "main": "src/index.js",
