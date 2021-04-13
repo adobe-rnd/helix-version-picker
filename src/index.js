@@ -13,6 +13,7 @@ const URL = require('url');
 const { wrap } = require('@adobe/helix-shared');
 const { logger } = require('@adobe/helix-universal-logger');
 const { wrap: status } = require('@adobe/helix-status');
+const { Response } = require('@adobe/helix-universal');
 const fetchAPI = require('@adobe/helix-fetch');
 
 function createFetchContext() {
@@ -24,7 +25,7 @@ function createFetchContext() {
   return fetchAPI.context({});
 }
 const fetchContext = createFetchContext();
-const { fetch, Response } = fetchContext;
+const { fetch } = fetchContext;
 
 function computeGithubURI(root, owner, repo, ref, path) {
   const rootURI = URL.parse(root);
