@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/adobe/helix-version-picker/compare/v1.3.3...v1.3.4) (2021-04-13)
+
+
+### Bug Fixes
+
+* use helix-universal ([47402e9](https://github.com/adobe/helix-version-picker/commit/47402e9daf8f867e79244a98671910d44a9b23c5))
+
 ## [1.3.3](https://github.com/adobe/helix-version-picker/compare/v1.3.2...v1.3.3) (2021-04-12)
 
 
