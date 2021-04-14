@@ -1,3 +1,10 @@
+## [1.3.5](https://github.com/adobe/helix-version-picker/compare/v1.3.4...v1.3.5) (2021-04-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-shared to v7.25.0 ([e90e35c](https://github.com/adobe/helix-version-picker/commit/e90e35cf310911935e261b4d2d69e5e44f6dcbba))
+
 ## [1.3.4](https://github.com/adobe/helix-version-picker/compare/v1.3.3...v1.3.4) (2021-04-13)
 
 
