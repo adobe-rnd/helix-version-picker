@@ -56,12 +56,17 @@ function error(message, statusCode) {
   });
 }
 
-async function getVersion(url) {
+async function getVersion(url, githubToken) {
   const fetchopts = {
     cache: 'no-store',
     signal: fetchContext.timeoutSignal(5000),
     'Cache-Control': 'no-cache',
   };
+  if (githubToken) {
+    fetchopts.headers = {
+      authorization: `token ${githubToken}`,
+    };
+  }
   const resp = await fetch(url, fetchopts);
   const text = await resp.text();
   if (resp.ok) {
@@ -83,6 +88,7 @@ async function main(request, context) {
   const repo = request.headers.get('x-repo');
   const ref = request.headers.get('x-ref');
   const root = request.headers.get('x-repo-root-path') || 'https://raw.githubusercontent.com/';
+  const githubToken = request.headers.get('x-github-token');
   const { log } = context;
 
   if (!owner || !repo || !ref) {
@@ -94,7 +100,7 @@ async function main(request, context) {
 
   try {
     const url = computeGithubURI(root, owner, repo, ref, '/helix-version.txt');
-    version = await getVersion(url);
+    version = await getVersion(url, githubToken);
   } catch (e) {
     log.error('error while fetching version', e);
     return error('unable to fetch version', 504);

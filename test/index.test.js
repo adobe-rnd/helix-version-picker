@@ -99,6 +99,34 @@ describe('Index Tests', () => {
     });
   });
 
+  it('index function returns the version from private github', async () => {
+    nock('https://raw.githubusercontent.com')
+      .get('/test-owner/test-repo/main/helix-version.txt')
+      .matchHeader('authorization', 'token ghp_foobar')
+      .reply(200, 'foo-bar');
+
+    const result = await index({
+      __ow_headers: {
+        'x-owner': 'test-owner',
+        'x-repo': 'test-repo',
+        'x-ref': 'main',
+        'x-github-token': 'ghp_foobar',
+      },
+    });
+    assert.deepEqual(result, {
+      body: 'foo-bar',
+      statusCode: 200,
+      headers: {
+        'cache-control': 'no-store, private, must-revalidate',
+        'x-pages-version': 'foo-bar',
+        'surrogate-control': 'max-age: 30',
+        'surrogate-key': 'preflight-main--test-repo--test-owner',
+        vary: 'X-Owner,X-Repo,X-Ref,X-Repo-Root-Path',
+        'content-type': 'text/plain; charset=utf-8',
+      },
+    });
+  });
+
   it('index function returns the version from github with alternate root', async () => {
     nock('https://www.example.com')
       .get('/test-owner/test-repo/main/helix-version.txt')
