@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/adobe/helix-version-picker/compare/v1.3.5...v1.4.0) (2021-04-15)
+
+
+### Features
+
+* respect x-github-token ([#99](https://github.com/adobe/helix-version-picker/issues/99)) ([828a714](https://github.com/adobe/helix-version-picker/commit/828a71402da73b1b61ff521a3301989619afc52d)), closes [#98](https://github.com/adobe/helix-version-picker/issues/98)
+
 ## [1.3.5](https://github.com/adobe/helix-version-picker/compare/v1.3.4...v1.3.5) (2021-04-14)
 
 
