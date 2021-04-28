@@ -1,3 +1,10 @@
+## [1.4.6](https://github.com/adobe/helix-version-picker/compare/v1.4.5...v1.4.6) (2021-04-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-shared to v7.29.1 ([#113](https://github.com/adobe/helix-version-picker/issues/113)) ([ba3aef6](https://github.com/adobe/helix-version-picker/commit/ba3aef6550c2e2704b0f891d331068657f343db9))
+
 ## [1.4.5](https://github.com/adobe/helix-version-picker/compare/v1.4.4...v1.4.5) (2021-04-27)
 
 
