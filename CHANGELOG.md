@@ -1,3 +1,10 @@
+## [1.4.13](https://github.com/adobe/helix-version-picker/compare/v1.4.12...v1.4.13) (2021-08-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-fetch to v2.4.2 ([#163](https://github.com/adobe/helix-version-picker/issues/163)) ([f5ce97e](https://github.com/adobe/helix-version-picker/commit/f5ce97e319fc589078980082aac7252573874f9d))
+
 ## [1.4.12](https://github.com/adobe/helix-version-picker/compare/v1.4.11...v1.4.12) (2021-07-28)
 
 
