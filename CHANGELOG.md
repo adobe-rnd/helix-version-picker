@@ -1,3 +1,10 @@
+## [1.4.22](https://github.com/adobe/helix-version-picker/compare/v1.4.21...v1.4.22) (2021-09-27)
+
+
+### Bug Fixes
+
+* **deps:** use secrets-manager ([5bb0d8c](https://github.com/adobe/helix-version-picker/commit/5bb0d8c5b38dc229c35b5e56e17ac4e5998d1f3a))
+
 ## [1.4.21](https://github.com/adobe/helix-version-picker/compare/v1.4.20...v1.4.21) (2021-09-21)
 
 
