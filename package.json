@@ -1,6 +1,6 @@
 {
   "name": "@adobe/helix-version-picker",
-  "version": "1.4.22",
+  "version": "1.4.23",
   "private": true,
   "description": "Helix Version Picker",
   "main": "src/index.js",
@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/adobe/helix-version-picker#readme",
   "dependencies": {
-    "@adobe/helix-fetch": "2.4.2",
+    "@adobe/helix-fetch": "3.0.0",
     "@adobe/helix-shared-wrap": "1.0.0",
     "@adobe/helix-status": "9.2.3",
     "@adobe/helix-universal": "1.8.0",
