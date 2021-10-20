@@ -1,3 +1,10 @@
+## [1.4.25](https://github.com/adobe/helix-version-picker/compare/v1.4.24...v1.4.25) (2021-10-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-universal-logger to v2 ([#197](https://github.com/adobe/helix-version-picker/issues/197)) ([2dd5c2c](https://github.com/adobe/helix-version-picker/commit/2dd5c2c9923a63397d30176e4cf46c8665627c52))
+
 ## [1.4.24](https://github.com/adobe/helix-version-picker/compare/v1.4.23...v1.4.24) (2021-10-19)
 
 
