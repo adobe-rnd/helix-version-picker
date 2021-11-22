@@ -1,3 +1,10 @@
+## [1.4.26](https://github.com/adobe/helix-version-picker/compare/v1.4.25...v1.4.26) (2021-11-22)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([#209](https://github.com/adobe/helix-version-picker/issues/209)) ([b37ed11](https://github.com/adobe/helix-version-picker/commit/b37ed11d56c2352a8fb6dc4e22d1bf23c89e4e86))
+
 ## [1.4.25](https://github.com/adobe/helix-version-picker/compare/v1.4.24...v1.4.25) (2021-10-20)
 
 
