@@ -1,3 +1,10 @@
+## [1.4.27](https://github.com/adobe/helix-version-picker/compare/v1.4.26...v1.4.27) (2021-11-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-universal to v1.9.1 ([#211](https://github.com/adobe/helix-version-picker/issues/211)) ([bd70446](https://github.com/adobe/helix-version-picker/commit/bd704460fe02bb39b5f473a140c62e1ff7d95f40))
+
 ## [1.4.26](https://github.com/adobe/helix-version-picker/compare/v1.4.25...v1.4.26) (2021-11-22)
 
 
