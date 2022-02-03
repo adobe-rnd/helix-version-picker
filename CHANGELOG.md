@@ -1,3 +1,10 @@
+## [1.4.29](https://github.com/adobe/helix-version-picker/compare/v1.4.28...v1.4.29) (2022-02-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-shared-wrap to v1.0.1 ([#239](https://github.com/adobe/helix-version-picker/issues/239)) ([22ce2ba](https://github.com/adobe/helix-version-picker/commit/22ce2ba839ac32a5b58871029e5b608b5bd58b39))
+
 ## [1.4.28](https://github.com/adobe/helix-version-picker/compare/v1.4.27...v1.4.28) (2022-01-10)
 
 
