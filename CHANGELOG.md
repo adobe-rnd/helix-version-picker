@@ -1,3 +1,10 @@
+## [1.4.30](https://github.com/adobe/helix-version-picker/compare/v1.4.29...v1.4.30) (2022-02-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-status to v9.2.5 ([#241](https://github.com/adobe/helix-version-picker/issues/241)) ([b9def20](https://github.com/adobe/helix-version-picker/commit/b9def20dfa8514666d4cddee301a91f3710e048c))
+
 ## [1.4.29](https://github.com/adobe/helix-version-picker/compare/v1.4.28...v1.4.29) (2022-02-03)
 
 
